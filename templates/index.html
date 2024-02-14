@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            height: 40px;
+            margin-top: 20px;
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+        }
+        .result {
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .result p {
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Breast Cancer Prediction</h1>
+	<form action="/predict" autocomplete="on" method="POST">
+        <label for="clump_thickness">Clump Thickness (1-10):</label>
+        <input type="number" id="clump_thickness" name="clump_thickness" min="1" max="10" required>
+        <label for="uniformity_of_cell_size">Uniformity of Cell Size (1-10):</label>
+        <input type="number" id="uniformity_of_cell_size" name="uniformity_of_cell_size" min="1" max="10" required>
+        <label for="uniformity_of_cell_shape">Uniformity of Cell Shape (1-10):</label>
+        <input type="number" id="uniformity_of_cell_shape" name="uniformity_of_cell_shape" min="1" max="10" required>
+        <label for="marginal_adhesion">Marginal Adhesion (1-10):</label>
+        <input type="number" id="marginal_adhesion" name="marginal_adhesion" min="1" max="10" required>
+        <label for="single_epithelial_cell_size">Single Epithelial Cell Size (1-10):</label>
+        <input type="number" id="single_epithelial_cell_size" name="single_epithelial_cell_size" min="1" max="10" required>
+        <label for="bare_nuclei">Bare Nuclei (1-10):</label>
+        <input type="number" id="bare_nuclei" name="bare_nuclei" min="1" max="10" required>
+        <label for="bland_chromatin">Bland Chromatin (1-10):</label>
+        <input type="number" id="bland_chromatin" name="bland_chromatin" min="1" max="10" required>
+        <label for="normal_nucleoli">Normal Nucleoli (1-10):</label>
+        <input type="number" id="normal_nucleoli" name="normal_nucleoli" min="1" max="10" required>
+        <label for="mitoses">Mitoses (1-10):</label>
+        <input type="number" id="mitoses" name="mitoses" min="1" max="10" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+    <div class="result">
+        <p>The predicted class is: {{ prediction }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
